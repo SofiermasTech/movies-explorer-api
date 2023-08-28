@@ -61,11 +61,10 @@ const getProfile = (req, res, next) => {
       if (!user) {
         return next(new NotFoundError('Пользователь не найден.'));
       }
-      // возвращаем пользователя, если он есть
       return res.status(200).send(user);
     })
     .catch(next);
-}; // добавили catch
+};
 
 const updateUser = (req, res, next) => {
   const { name, email } = req.body;
