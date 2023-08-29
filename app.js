@@ -16,10 +16,10 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 
-const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
+const { PORT = 3000, DB_ADRESS, NODE_ENV } = process.env;
 
 // подключаемся к серверу mongo
-mongoose.connect(DB_URL, {
+mongoose.connect(NODE_ENV === 'production' ? DB_ADRESS : 'mongodb://127.0.0.1:27017/bitfilmsdb', {
   useNewUrlParser: true,
 });
 
