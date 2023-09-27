@@ -14,7 +14,7 @@ const mainRouter = require('./routes/index');
 
 const app = express();
 app.use(helmet());
-app.use(cors());
+app.use(cors({ origin: ['https://api.volserma-movies.nomoredomainsicu.ru', 'https://api.nomoreparties.co/beatfilm-movies', 'https://api.nomoreparties.co', 'http://localhost:3001'], credentials: true }));
 
 const { PORT = 3000, DB_ADRESS, NODE_ENV } = process.env;
 
