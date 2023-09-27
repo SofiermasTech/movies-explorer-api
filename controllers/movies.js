@@ -20,13 +20,14 @@ module.exports.addMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
     thumbnail,
     movieId,
   } = req.body;
 
+  const owner = req.user._id;
   Movie.create({
     country,
     director,
@@ -34,12 +35,12 @@ module.exports.addMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
+    owner,
     thumbnail,
     movieId,
-    owner: req.user._id,
   })
     .then((movie) => res.status(200).send(movie))
     .catch((err) => {
